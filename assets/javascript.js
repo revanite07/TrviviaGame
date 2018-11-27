@@ -60,7 +60,7 @@ var game = {
     incorrect: 0,
     counter: countStartNumber,
     unanswered: 0,
-   startTimer: start,
+    startTimer: start,
 
     countdown: function (){
         game.counter--;
@@ -89,6 +89,7 @@ var game = {
     },
 
     outOfTime: function(){
+        
         clearInterval(timer);
         quiz.html('<h3>Sorry youre outta time!</h3>');
         quiz.html('<h4>The Correct answer was: ' + questions[this.currentQuestion].correctAnswer + '<h4>');
@@ -106,13 +107,13 @@ var game = {
         clearInterval(timer);
         quiz.html('<h3>Correct Answers: ' + game.correct + '</h3>');
         quiz.html('<h3>Incorrect Answers: ' + game.incorrect+ '</h3>');
-        quiz.html('<h3>Sorry youre outta time!</h3>');
-        quiz.html('<h3>Sorry youre outta time!</h3>');
+        quiz.html('<h3>Unanswered: ' + (questions.length - (game.incorrect + game.correct)) + '</h3>');
+        quiz.html('<h3>Sorry but youre outta time!</h3>');
 
     },
     
     guessChecker: function(){
-       
+       // I tired multiple ways to define the correct answers in the question array but the code does not know what im refrencing to get the correct answer.
         var userAnswer = ($(this).attr("data-name"));
         console.log(correctAnswers);
        
